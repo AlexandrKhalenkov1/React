@@ -11,3 +11,154 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.wrapper{
+  width: 450px;
+  margin-left: auto;
+  margin-right: auto;   
+}
+
+.content{
+  box-shadow: 0 0 15px rgba(0,0,0,0.5); 
+  padding: 10px;
+  border-radius: 3px;
+}
+
+.todoFormWrapper{
+  width: 400px;
+  margin: 10px 10px 10px 10px;
+  padding-bottom:5px;
+  display: flex;
+  justify-content: flex-start;
+  border-bottom: 2px solid rgb(233, 227, 227);
+
+}
+
+.todoFormInput{
+  outline: none;
+  border: none;
+  margin-left: 15px;
+  font-size: 16px;
+}
+
+.todoFooter{
+  width: 400px;
+  height: 30px;
+  display: flex;
+  flex-direction: row; 
+  justify-content:space-between;
+  align-items: center;
+  margin: 0px 15px 0px 15px;
+}
+
+.buttonGroup{
+  width: 160px;
+  height: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.btnsInFooter{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: rgb(75, 73, 73);
+  font-weight: 500;
+  font-size: 14px;
+  border: none;
+  background-color: #ffffff;
+}
+
+.active{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: rgb(75, 73, 73);
+  font-weight: 500;
+  font-size: 14px;
+  border: 1px solid rgb(75, 73, 73);
+  border-radius: 4px;
+}
+.markAllTodos{
+  color: rgb(126, 126, 126);
+  font-size: 14px;
+}
+.btnsInFooter__clear{
+  color: rgb(126, 126, 126);
+  font-size: 14px;
+}
+
+
+.markAllTodos:hover{
+  color: rgb(75, 73, 73);
+  font-size: 14px;
+}
+.btnsInFooter__clear:hover{
+  color: rgb(75, 73, 73);
+  font-size: 14px;
+}
+
+
+
+.newTodoWrapper{
+margin-top: 15px;
+}
+
+.newTodo{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 15px 15px 15px 15px;
+  width: 395px;
+  height: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid rgb(233, 227, 227);
+}
+
+
+
+.title{
+  text-align: center;
+  margin-top: 25px;
+  margin-bottom: 30px;
+  font-size: 25px;
+  font-weight: 800;
+}
+
+
+
+.itemDelete{
+  color:rgb(131, 128, 128);
+}
+.itemDelete:hover{
+  color:rgb(46, 45, 45);
+}
+
+.bi-check-lg{
+  color: rgb(255, 255, 255);
+  border: 1px solid rgb(131, 128, 128);
+  border-radius: 50%;
+  margin-right: 5px;
+}
+.bi-check-lg-done{
+  transition: 0.3s;
+  color: rgb(126, 126, 126);
+  font-weight: 900;
+  border: 1px solid rgb(131, 128, 128);
+  border-radius: 50%;
+  
+}
+
+.done{
+  text-decoration: line-through;
+  color:rgb(131, 128, 128);
+}
+
+.checkAndItem{
+  display: flex;
+}
+.item{
+  margin-left: 30px;
+  position: fixed;
+}
