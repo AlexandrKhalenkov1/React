@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useMemo, useCallback, memo } from 'react'
 import './App.css'
-import ToDo from './ToDo'
-import ToDoForm from './ToDoForm'
-import TodoFooter from './TodoFooter'
+import ToDo from './ToDo/ToDo'
+import ToDoForm from './ToDo/ToDoForm'
+import TodoFooter from './ToDo/TodoFooter'
 
-const TodosList = ({lists, handleToggle, removeTask}) => {
+const TodosList = memo(({lists, handleToggle, removeTask}) => {
   return (
     <div className='newTodoWrapper'>
       {
@@ -21,69 +21,23 @@ const TodosList = ({lists, handleToggle, removeTask}) => {
       }
     </div>
   )
-}
+})
 
 const App = () => {
 
   const [todos, setTodos] = useState([])  //для туду элемента
-  const [lists, setLists] = useState([])
-  const [countTodos, setCountTodos] = useState(0)
   const [statusButton, setStatusButton] = useState('All');
 
-  const countActiveTodos = () => {
-    const arr = todos.filter((todo) => !todo.complete)
-    setCountTodos(arr.length)
-  }
-
   useEffect(() => {
-    console.log('123123123');
     const localTodos = JSON.parse(localStorage.getItem('todos'));
-    setTodos(localTodos);
-    setLists(localTodos);
-
+    setTodos(localTodos || []);
   }, [])
 
   useEffect(() => {
     localStorage.setItem('todos', JSON.stringify(todos))
-    setLists(todos);
-    countActiveTodos();
-    whichPageChosed();
   }, [todos])
 
-  useEffect(() => {
-    whichPageChosed();
-  }, [statusButton])
-
-
-  const addTask = (userInput) => {
-    if (userInput) {
-      const newItem = {
-        id: Math.random().toString(36).substr(2, 9),
-        task: userInput,
-        complete: false
-      }
-      setTodos([...todos, newItem])
-    }
-  }
-
-
-  const removeTask = (id) => {
-    const filteredTodos = todos.filter((todo) => todo.id !== id);
-    setTodos(filteredTodos);
-  }
-
-  const handleToggle = (id) => {
-    const checkedTodo = todos.map((todo) => {
-      if (todo.id === id) {
-        todo.complete = !todo.complete
-      }
-      return todo;
-    });
-    setTodos(checkedTodo);
-  }
-
-
-  const whichPageChosed = () => {
+  const lists = useMemo(() => {
     let filterTodo;
     switch (statusButton) {
       case 'Todo':
@@ -97,8 +51,49 @@ const App = () => {
         filterTodo = todos;
         break;
     }
-    setLists(filterTodo);
+    return filterTodo;
+  }, [todos, statusButton]);
+
+  const activeTodos = useMemo(() => {
+    return todos.filter((todo) => !todo.complete).length
+  }, [todos])
+
+  const unActiveTodos = useMemo(() => {
+    return todos.filter((todo) => todo.complete).length
+  }, [todos])
+
+  const addTask = (userInput) => {
+    if (userInput) {
+      const newItem = {
+        id: Math.random().toString(36).substr(2, 9),
+        task: userInput,
+        complete: false
+      }
+      setTodos([...todos, newItem])
+    }
   }
+
+
+  const removeTask = useCallback(
+    (id) => {
+      const filteredTodos = todos.filter((todo) => todo.id !== id);
+      setTodos(filteredTodos);
+    },
+    [todos, setTodos]
+  )
+
+  const handleToggle = useCallback(
+    (id) => {
+      const checkedTodo = todos.map((todo) => {
+        if (todo.id === id) {
+          todo.complete = !todo.complete
+        }
+        return todo;
+      });
+      setTodos(checkedTodo);
+    },
+    [todos, setTodos],
+  )
 
   const chooseAllTodos = () => {
     const checkAll = todos.map((todo) => {
@@ -133,9 +128,11 @@ const App = () => {
           todo={!!todos.length}
           chooseAllTodos={chooseAllTodos}
           clearAllDone={clearAllDone}
-          countTodos={countTodos}
+          countTodos={activeTodos}
+          unActiveTodos ={unActiveTodos}
           setStatusButton={setStatusButton}
           statusButton={statusButton}
+          todos ={todos}
         />
       </div>
     </div>

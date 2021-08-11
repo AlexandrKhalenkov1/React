@@ -60,6 +60,7 @@ code {
 }
 
 .btnsInFooter{
+  cursor: pointer;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -81,28 +82,47 @@ code {
   border-radius: 4px;
 }
 .markAllTodos{
+  cursor: pointer;
+  border: none; 
+  outline: none;
   color: rgb(126, 126, 126);
   font-size: 14px;
+  background-color: #ffffff;
+  transition: 0.3s;
 }
 .btnsInFooter__clear{
+  width: 125px;
+  height: 20px;
+  cursor: pointer;
+  border: none; 
+  outline: none;
+  background-color: #ffffff;
   color: rgb(126, 126, 126);
+  font-weight: 500;
   font-size: 14px;
+  transition: 0.3s;
 }
-
 
 .markAllTodos:hover{
   color: rgb(75, 73, 73);
   font-size: 14px;
+  transition: 0.1s;
 }
 .btnsInFooter__clear:hover{
   color: rgb(75, 73, 73);
   font-size: 14px;
+  transition: 0.1s;
 }
-
-
 
 .newTodoWrapper{
 margin-top: 15px;
+max-height:300px;
+width:430px;
+overflow-y:scroll;
+}
+
+::-webkit-scrollbar {
+  width: 0;
 }
 
 .newTodo{
@@ -129,6 +149,7 @@ margin-top: 15px;
 
 
 .itemDelete{
+  cursor: pointer;
   color:rgb(131, 128, 128);
 }
 .itemDelete:hover{
@@ -143,7 +164,7 @@ margin-top: 15px;
 }
 .bi-check-lg-done{
   transition: 0.3s;
-  color: rgb(126, 126, 126);
+  color: #6a8a65;
   font-weight: 900;
   border: 1px solid rgb(131, 128, 128);
   border-radius: 50%;
@@ -151,14 +172,15 @@ margin-top: 15px;
 }
 
 .done{
+  cursor: pointer;
   text-decoration: line-through;
   color:rgb(131, 128, 128);
 }
 
 .checkAndItem{
+  cursor: pointer;
   display: flex;
 }
 .item{
-  margin-left: 30px;
-  position: fixed;
+  margin-left: 10px;
 }
