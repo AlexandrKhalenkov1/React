@@ -81,7 +81,7 @@ code {
   border: 1px solid rgb(75, 73, 73);
   border-radius: 4px;
 }
-.markAllTodos{
+.able{
   cursor: pointer;
   border: none; 
   outline: none;
@@ -90,6 +90,24 @@ code {
   background-color: #ffffff;
   transition: 0.3s;
 }
+
+
+.able:hover{
+  color: rgb(75, 73, 73);
+  font-size: 14px;
+  transition: 0.1s;
+}
+
+.disable{
+  border: none; 
+  outline: none;
+  color: rgb(197, 197, 197);
+  font-size: 14px;
+  background-color: #ffffff;
+  transition: 0.3s;
+}
+
+
 .btnsInFooter__clear{
   width: 125px;
   height: 20px;
@@ -103,11 +121,6 @@ code {
   transition: 0.3s;
 }
 
-.markAllTodos:hover{
-  color: rgb(75, 73, 73);
-  font-size: 14px;
-  transition: 0.1s;
-}
 .btnsInFooter__clear:hover{
   color: rgb(75, 73, 73);
   font-size: 14px;
@@ -156,24 +169,29 @@ overflow-y:scroll;
   color:rgb(46, 45, 45);
 }
 
-.bi-check-lg{
+.fa-check{
   color: rgb(255, 255, 255);
   border: 1px solid rgb(131, 128, 128);
   border-radius: 50%;
   margin-right: 5px;
 }
-.bi-check-lg-done{
+.fa-check-done{
   transition: 0.3s;
-  color: #6a8a65;
+  color: #588b50;
   font-weight: 900;
   border: 1px solid rgb(131, 128, 128);
   border-radius: 50%;
   
 }
 
-.done{
+.done-item{
   cursor: pointer;
   text-decoration: line-through;
+  color:rgb(131, 128, 128);
+}
+
+.done-but-for-checkbox{
+  cursor: pointer;
   color:rgb(131, 128, 128);
 }
 

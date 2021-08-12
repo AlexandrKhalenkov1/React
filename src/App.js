@@ -73,7 +73,6 @@ const App = () => {
     }
   }
 
-
   const removeTask = useCallback(
     (id) => {
       const filteredTodos = todos.filter((todo) => todo.id !== id);
@@ -113,27 +112,21 @@ const App = () => {
       <header>
         <div className='title'>Your todo list </div>
       </header>
-
       <div className='content'>
-
         <ToDoForm addTask={addTask} />
-
         <TodosList
           lists={lists}
           handleToggle={handleToggle}
-          removeTask={removeTask} 
-        />
-
+          removeTask={removeTask}/>
         <TodoFooter
           todo={!!todos.length}
           chooseAllTodos={chooseAllTodos}
           clearAllDone={clearAllDone}
-          countTodos={activeTodos}
+          activeTodos={activeTodos}
           unActiveTodos ={unActiveTodos}
           setStatusButton={setStatusButton}
           statusButton={statusButton}
-          todos ={todos}
-        />
+          todos ={todos}/>
       </div>
     </div>
   );
