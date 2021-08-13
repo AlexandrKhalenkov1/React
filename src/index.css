@@ -95,7 +95,6 @@ code {
 .able:hover{
   color: rgb(75, 73, 73);
   font-size: 14px;
-  transition: 0.1s;
 }
 
 .disable{
@@ -108,10 +107,10 @@ code {
 }
 
 
-.btnsInFooter__clear{
+.visible{
+  cursor: pointer;
   width: 125px;
   height: 20px;
-  cursor: pointer;
   border: none; 
   outline: none;
   background-color: #ffffff;
@@ -121,10 +120,20 @@ code {
   transition: 0.3s;
 }
 
-.btnsInFooter__clear:hover{
+.visible:hover{
   color: rgb(75, 73, 73);
+}
+
+.invisible{
+  width: 125px;
+  height: 20px;
+  border: none; 
+  outline: none;
+  background-color: #ffffff;
+  color: rgb(255, 255, 255);
+  font-weight: 500;
   font-size: 14px;
-  transition: 0.1s;
+  transition: 0.3s;
 }
 
 .newTodoWrapper{
