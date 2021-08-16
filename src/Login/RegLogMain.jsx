@@ -1,6 +1,7 @@
 /* eslint-disable default-case */
 /* eslint-disable no-unused-vars */
-import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import React, { useState, useEffect, useCallback } from 'react';
 
 const RegLogMain = () => {
   const [email, setEmail] = useState('');
@@ -51,17 +52,37 @@ const RegLogMain = () => {
         break;
     }
   };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const data = {
+      email,
+      password
+    };
+    console.log(data);
+
+    axios.post('http://localhost:8000/register', data).then(
+      (res) => {
+        console.log(res);
+      }
+    ).catch(
+      (err) => {
+        console.log(err);
+      }
+    );
+  };
+
   return (
     <div className="registrForm">
-      <form>
+      <form onSubmit={handleSubmit}>
         <h3>Registration form</h3>
         {(emailDirty && emailError) && <div style={{ color: 'red' }}>{emailError}</div>}
         <input onChange={(e) => emailHandler(e)} onBlur={(e) => blurHandler(e)} value={email} name="email" type="text" placeholder="Enter your email" />
+
         {(passwordError && passwordDirty) && <div style={{ color: 'red' }}>{passwordError}</div>}
         <input onChange={(e) => passwordHandler(e)} value={password} onBlur={(e) => blurHandler(e)} name="password" type="password" placeholder="Enter your password" />
         <button disabled={!formValid} type="submit">Registration</button>
       </form>
-
     </div>
   );
 };

@@ -91,11 +91,10 @@ code {
   transition: 0.3s;
 }
 
-
 .able:hover{
   color: rgb(75, 73, 73);
   font-size: 14px;
-}
+} 
 
 .disable{
   border: none; 
